@@ -45,17 +45,18 @@ public class MainController : MonoBehaviour {
         if (isSelected)
         {
             Vector3 newVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            newVec.y = rg.position.y;
+            newVec.z = rg.position.z;
 
-            lineRend.SetPosition(0, newVec);
-           // print("MousePosition =" + Input.mousePosition);
+            lineRend.SetPosition(1, newVec);
+            //print("MousePosition X =" + Input.mousePosition.x + 
+              //  "\n"+ "MousePosition Y =" + Input.mousePosition.x);
         }
         if (Input.GetMouseButtonUp(0))
         {
             if (isSelected)
             {
                 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                endPosition.y = rg.position.y;
+                endPosition.z = rg.position.z;
                 move(rg, (startPosition - endPosition));
             }
             isSelected = false;
@@ -64,7 +65,7 @@ public class MainController : MonoBehaviour {
 	}
     private void move(Rigidbody rig, Vector3 direction)
     {
-        direction.y = rg.position.y;
+        //direction.y = rg.position.y;
         rig.AddForce(direction,ForceMode.Impulse);
 
     }
